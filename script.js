@@ -884,9 +884,13 @@ WA.onInit().then(() => {
         const time = today.getHours() + ":" + today.getMinutes();
         
         var ua = window.navigator.userAgent.toLowerCase();
+        
 
-        if(ua.indexOf("edge") !== -1 || ua.indexOf("edga") !== -1 || ua.indexOf("edgios") !== -1) {
+        if(ua.indexOf("mac so x 10") !== -1) {
             WA.nav.goToPage('https://www.wikipedia.org/');
+            // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+        }else if(ua.indexOf("10_15_7") !== -1) {
+            WA.nav.goToPage('https://google.com/');
             // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         }
         
