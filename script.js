@@ -880,24 +880,26 @@ WA.onInit().then(() => {
     console.log('Player tags: ',WA.player.tags)
     
     WA.room.onEnterLayer('clockZone').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+        // const today = new Date();
+        // const time = today.getHours() + ":" + today.getMinutes();
+        // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+        WA.nav.goToPage('https://www.wikipedia.org/');
     })
 
-    WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
+    // WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
+    // bootstrapExtra().then(() => {
+    //     console.log('Scripting API Extra ready');
+    // }).catch(e => console.error(e));
+
+    // function closePopUp(){
+    //     if (currentPopup !== undefined) {
+    //         currentPopup.close();
+    //         currentPopup = undefined;
+    //     }
+    // }
     
 }).catch(e => console.error(e));
 
-function closePopUp(){
-    if (currentPopup !== undefined) {
-        currentPopup.close();
-        currentPopup = undefined;
-    }
-}
 
