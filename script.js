@@ -847,14 +847,19 @@
         function n() {
             void 0 !== t && (t.close(), t = void 0)
         }
+
         console.log("Script started successfully"), WA.onInit().then((() => {
-            console.log("Scripting API ready"), console.log("Player tags: ", WA.player.tags), WA.room.onEnterLayer("clockZone").subscribe((() => {
+            console.log("Scripting API ready"), console.log("Player tags: ", WA.player.tags), 
+            WA.room.onEnterLayer("clockZone").subscribe((() => {
                 const e = new Date,
                     o = e.getHours() + ":" + e.getMinutes();
                 t = WA.ui.openPopup("clockPopup", "It's " + o, [])
-            })), WA.room.onLeaveLayer("clockZone").subscribe(n), (0, e.bootstrapExtra)().then((() => {
+            })), 
+            
+            WA.room.onLeaveLayer("clockZone").subscribe(n), (0, e.bootstrapExtra)().then((() => {
                 console.log("Scripting API Extra ready")
             })).catch((e => console.error(e)))
+
         })).catch((e => console.error(e)))
     })()
 })();
@@ -867,20 +872,27 @@ WA.ui.registerMenuCommand('menu test', {
 })
 
 
-let helloWorldPopup;
+WA.onInit().then(() => {
+    console.log('Current player name: ', WA.player.name);
 
-helloWorldPopup = WA.room.onEnterLayer("myZone").subscribe(() => {
-    WA.ui.openPopup("popupRectangle", 'Hello world!', [{
-        label: "Close",
-        className: "primary",
-        callback: (popup) => {
-            // Close the popup when the "Close" button is pressed.
-            popup.close();
-        }
-    }]);
+    let helloWorldPopup;
+
+    helloWorldPopup = WA.room.onEnterLayer("myZone").subscribe(() => {
+        WA.ui.openPopup("popupRectangle", 'Hello world!', [{
+            label: "Close",
+            className: "primary",
+            callback: (popup) => {
+                // Close the popup when the "Close" button is pressed.
+                popup.close();
+            }
+        }]);
+    });
+    
+    // Close the popup when we leave the zone.
+    WA.room.onLeaveLayer("myZone").subscribe(() => {
+        helloWorldPopup.close();
+    })
+
+
 });
 
-// Close the popup when we leave the zone.
-WA.room.onLeaveLayer("myZone").subscribe(() => {
-    helloWorldPopup.close();
-})
