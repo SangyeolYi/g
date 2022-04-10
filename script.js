@@ -874,30 +874,6 @@ WA.ui.registerMenuCommand('menu test', {
 })
 
 
-WA.onInit().then(() => {
-    console.log('Current player name: ', WA.player.name);
-
-    let helloWorldPopup;
-
-    helloWorldPopup = WA.room.onEnterLayer("myZone").subscribe(() => {
-        WA.ui.openPopup("popupRectangle", 'Hello world!', [{
-            label: "Close",
-            className: "primary",
-            callback: (popup) => {
-                // Close the popup when the "Close" button is pressed.
-                popup.close();
-            }
-        }]);
-    });
-    
-    // Close the popup when we leave the zone.
-    WA.room.onLeaveLayer("myZone").subscribe(() => {
-        helloWorldPopup.close();
-    })
-
-
-});
-
 
 WA.onInit().then(() => {
     console.log('Scripting API ready');
@@ -910,15 +886,6 @@ WA.onInit().then(() => {
     })
 
     WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
-
-    WA.room.onEnterLayer('myZone').subscribe(() => {
-        const today = new Date();
-        const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
-    })
-
-    WA.room.onLeaveLayer('myZone').subscribe(closePopUp)
-
 
     // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
     bootstrapExtra().then(() => {
@@ -933,5 +900,4 @@ function closePopUp(){
         currentPopup = undefined;
     }
 }
-
 
