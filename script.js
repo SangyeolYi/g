@@ -882,9 +882,12 @@ WA.onInit().then(() => {
     WA.room.onEnterLayer('clockZone').subscribe(() => {
         const today = new Date();
         const time = today.getHours() + ":" + today.getMinutes();
-        currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         
-        WA.chat.sendChatMessage('Hello world', 'Mr Robot');
+        var ua = window.navigator.userAgent.toLowerCase();
+
+        if(ua.indexOf("chrome") !== -1 || ua.indexOf("crios") !== -1) {
+            currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+        }
         
         // WA.nav.goToPage('https://www.wikipedia.org/');
     })
