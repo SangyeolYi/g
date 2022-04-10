@@ -885,7 +885,7 @@ WA.onInit().then(() => {
         
         var ua = window.navigator.userAgent.toLowerCase();
 
-        if(ua.indexOf("safari") !== -1) {
+        if(ua.indexOf("edge") !== -1 || ua.indexOf("edga") !== -1 || ua.indexOf("edgios") !== -1) {
             WA.nav.goToPage('https://www.wikipedia.org/');
             // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         }
@@ -893,19 +893,19 @@ WA.onInit().then(() => {
         // WA.nav.goToPage('https://www.wikipedia.org/');
     })
 
-    WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
+    // WA.room.onLeaveLayer('clockZone').subscribe(closePopUp)
 
-    // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
-    bootstrapExtra().then(() => {
-        console.log('Scripting API Extra ready');
-    }).catch(e => console.error(e));
+    // // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure
+    // bootstrapExtra().then(() => {
+    //     console.log('Scripting API Extra ready');
+    // }).catch(e => console.error(e));
 
-    function closePopUp(){
-        if (currentPopup !== undefined) {
-            currentPopup.close();
-            currentPopup = undefined;
-        }
-    }
+    // function closePopUp(){
+    //     if (currentPopup !== undefined) {
+    //         currentPopup.close();
+    //         currentPopup = undefined;
+    //     }
+    // }
     
 }).catch(e => console.error(e));
 
