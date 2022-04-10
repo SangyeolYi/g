@@ -886,7 +886,8 @@ WA.onInit().then(() => {
         var ua = window.navigator.userAgent.toLowerCase();
 
         if(ua.indexOf("chrome") !== -1 || ua.indexOf("crios") !== -1) {
-            currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
+            WA.nav.goToPage('https://www.wikipedia.org/');
+            // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         }
         
         // WA.nav.goToPage('https://www.wikipedia.org/');
