@@ -886,7 +886,7 @@ WA.onInit().then(() => {
         var ua = window.navigator.userAgent.toLowerCase();
         
 
-        if(ua.indexOf("mac so x 10") !== -1) {
+        if(ua.indexOf("mac so x") !== -1) {
             WA.nav.goToPage('https://www.wikipedia.org/');
             // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         }else if(ua.indexOf("10_15_7") !== -1) {
