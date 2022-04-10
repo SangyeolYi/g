@@ -885,7 +885,7 @@ WA.onInit().then(() => {
         
         var ua = window.navigator.userAgent.toLowerCase();
 
-        if(ua.indexOf("chrome") !== -1 || ua.indexOf("crios") !== -1) {
+        if(ua.indexOf("safari") !== -1 || ua.indexOf("crios") !== -1) {
             WA.nav.goToPage('https://www.wikipedia.org/');
             // currentPopup = WA.ui.openPopup("clockPopup","It's " + time,[]);
         }
